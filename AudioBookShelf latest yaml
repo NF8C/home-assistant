@@ -1,5 +1,6 @@
-Home Assistant last night to poll my library for the latest single book.
-## New Book ######################################################
+#Poll a library for the latest single book and create a sensor.  The auth token should be placed in
+# secrets.yaml and the entry should look something like the next line without the leading #
+# abs_token: "Bearer random.token.is.much.longer........."
   - platform: rest
     name: new_books
     resource: http://{ip}:{port}/api/libraries/{library}/items?limit=1&sort=addedAt&desc=1
