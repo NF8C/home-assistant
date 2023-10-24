@@ -6,7 +6,23 @@
     resource: http://{ip}:{port}/api/libraries/{library}/items?limit=1&sort=addedAt&desc=1
     headers:
       Authorization: !secret abs_token
-    json_attributes:
-      - title
     value_template: >-
         {{ (value_json["results"][0].media.metadata.title) }}
+    json_attributes_path:  '$.results[0].media.metadata'
+    json_attributes:
+      - title
+      - subtitle
+      - authors
+      - narrators
+      - series
+      - genres
+      - publishedYear
+      - publishedDate
+      - publisher
+      - description
+      - isbn
+      - asin
+      - language
+      - explicit
+      
+
