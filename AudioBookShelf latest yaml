@@ -1,1 +1,11 @@
-
+Home Assistant last night to poll my library for the latest single book.
+## New Book ######################################################
+  - platform: rest
+    name: new_books
+    resource: http://{ip}:{port}/api/libraries/{library}/items?limit=1&sort=addedAt&desc=1
+    headers:
+      Authorization: !secret abs_token
+    json_attributes:
+      - title
+    value_template: >-
+        {{ (value_json["results"][0].media.metadata.title) }}
